@@ -1,0 +1,15 @@
+### This file contains the list of variables for provisioning a volume for NetApp Keystone Systems
+netapp_hostname: cluster1.demo.netapp.com
+netapp_username: admin
+netapp_password: Netapp1!
+#
+# Volume Information Required
+netapp_aggregate: cluster_01_SSD_1
+netapp_name: cifsworkload_6
+netapp_size: 1
+netapp_size_unit: gb
+netapp_space_guarantee: none
+netapp_policy: default
+netapp_percent_snapshot_space: 10
+netapp_qos_adaptive_policy_group: extreme
+netapp_vserver: svm0

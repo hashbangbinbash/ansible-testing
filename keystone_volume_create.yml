@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  collections:
+    - netapp.ontap.na_ontap_volume
+  vars_files:
+    ~\git\ansible-testing\keystone_ontap_var.yml
+  gather_facts: no
+  tasks:
+    - name: Create FlexVol with QoS adaptive
+      na_ontap_volume:
+        state: present
+        name: "{{ netapp_name }}"
+        is_infinite: False
+        aggregate_name: "{{ netapp_aggr }}"
+        size: "{{ netapp_size }}"
+        size_unit: "{{ netapp_size_unit }}"
+        space_guarantee: none
+        policy: default
+        percent_snapshot_space: 10
+        qos_adaptive_policy_group: extreme
+        vserver: "{{ netapp_vserver }}"
+        wait_for_completion: True
+        hostname: "{{ netapp_hostname }}"
+        username: "{{ netapp_username }}"
+        password: "{{ netapp_password }}"
